@@ -18,6 +18,7 @@ export function drawLevel(ctx, sceneManager) {
   ];
 
   const levelWalls = [
+    { x: 350, y: 425, width: 100, height: 50 },
   ];
 
   const eventManager = new EventManager();
