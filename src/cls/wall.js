@@ -18,24 +18,24 @@ export class WallRect {
     const r1_y = r0_y + height;
 
     const lineIntersects = (d0_x, d0_y, d1_x, d1_y, r0_x, r0_y, r1_x, r1_y) => {
-      console.log(`checking intersection between line (${d0_x},${d0_y}) to (${d1_x}, ${d1_y}) and line (${r0_x},${r0_y}) to (${r1_x}, ${r1_y})`);
+      // console.log(`checking intersection between line (${d0_x},${d0_y}) to (${d1_x}, ${d1_y}) and line (${r0_x},${r0_y}) to (${r1_x}, ${r1_y})`);
       const denominator = (d1_x - d0_x) * (r0_y - r1_y) - (d1_y - d0_y) * (r0_x - r1_x);
       if (denominator === 0) {
-        console.log('Lines are parallel');
+        // console.log('Lines are parallel');
         return false;       
       }
 
       const lambda = (-(r1_y - r0_y) * (r0_x - d0_x) + (r1_x - r0_x) * (r0_y - d0_y)) / denominator;
       const mu = (-(d1_y - d0_y) * (r0_x - d0_x) + (d1_x - d0_x) * (r0_y - d0_y)) / denominator;
 
-      console.log(`lambda: ${lambda}, mu: ${mu}`);
+      // console.log(`lambda: ${lambda}, mu: ${mu}`);
       
       if (lambda >= 0 && lambda <= 1 && mu >= 0 && mu <= 1) {
-        console.log('Intersection detected');
+        // console.log('Intersection detected');
         return true;
       }
 
-      console.log('No intersection');
+      // console.log('No intersection');
       return false;
     };
 

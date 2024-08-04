@@ -8,7 +8,7 @@ export class SceneManager {
 
   async switchTo(modulePath, screenFunctionName) {
     if (this.currentScreen && this.currentScreen.cleanup) {
-      console.log("scene-manager: running cleanup!")
+      // console.log("scene-manager: running cleanup!")
       this.currentScreen.cleanup();
     }
 

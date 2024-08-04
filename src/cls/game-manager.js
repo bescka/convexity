@@ -43,22 +43,22 @@ export class GameManager {
 
     if (!cluster1 && !cluster2) {
       const newCluster = new Cluster();
-      console.log("new cluster created!");
+      // console.log("new cluster created!");
       newCluster.addConnection(dot1, dot2);
       this.clusters.push(newCluster);
       await this.detectShapes([newCluster]);
     } else if (cluster1 && !cluster2) {
       cluster1.addConnection(dot1, dot2);
-      console.log("added to cluster 1!");
+      // console.log("added to cluster 1!");
       await this.detectShapes([cluster1]);
     } else if (!cluster1 && cluster2) {
       cluster2.addConnection(dot1, dot2);
-      console.log("added to cluster 2!");
+      // console.log("added to cluster 2!");
       await this.detectShapes([cluster2]);
     } else {
       cluster1.addConnection(dot1, dot2);
       this.mergeClusters(cluster1, cluster2);
-      console.log("merged clusters!");
+      // console.log("merged clusters!");
       await this.detectShapes([cluster1]);
     }
   }
@@ -70,7 +70,7 @@ export class GameManager {
       this.clusters = this.clusters.filter((c) => c !== cluster);
       this.clusters.push(...newClusters);
       await this.detectShapes(newClusters);
-      console.log(`split into ${newClusters.length} clusters`);
+      // console.log(`split into ${newClusters.length} clusters`);
     }
     this.resetDotAndLineColors(cluster); 
   }
@@ -79,12 +79,12 @@ export class GameManager {
     for (const cluster of clusters) {
       const shape = cluster.detectShapes();
       if (cluster.hasCompletedShape()) {
-        console.log("Shape completed!", shape);
+        // console.log("Shape completed!", shape);
         if (cluster.isShapeConvex()) {
           console.log("The shape is convex.");
           await this.highlightShape(shape, true);
           if (this.isLevelComplete()) {
-            console.log('islevelcomplete is true')
+            // console.log('islevelcomplete is true')
             this.levelCompleteScreen.isActive = true
           }
         } else {
@@ -136,7 +136,7 @@ export class GameManager {
   // }
 
   setShapeColor(shape, color) {
-    console.log("Setting shape color:", color);
+    // console.log("Setting shape color:", color);
 
     shape.forEach((dot) => {
       dot.color = color;
@@ -145,12 +145,12 @@ export class GameManager {
     for (let i = 0; i < shape.length; i++) {
       const dot1 = shape[i];
       const dot2 = shape[(i + 1) % shape.length];
-      console.log("Checking line between:", dot1, dot2);
+      // console.log("Checking line between:", dot1, dot2);
 
       this.lines.forEach(line => {
         if ((line.dot1 === dot1 && line.dot2 === dot2) || (line.dot1 === dot2 && line.dot2 === dot1)) {
           line.color = color;
-          console.log("Line color set between:", dot1, dot2);
+          // console.log("Line color set between:", dot1, dot2);
         }
       });
     }
@@ -208,16 +208,16 @@ export class GameManager {
     if (event.button === 0) {// Left click
       for (const dot of this.dots) {
         if (dot.handleClick(event, rect, this.activeDot, this.walls)) {
-          console.log("Dot click handleClick true!");
+          // console.log("Dot click handleClick true!");
           if (this.activeDot) {
-            console.log("There was an active dot!");
+            // console.log("There was an active dot!");
             if (
               this.activeDot !== dot &&
               this.activeDot.canConnect() &&
               dot.canConnect()
             ) {
-              console.log("This dot can connect!");
-              console.log("the Dot you are connecting to has", dot.connections.length, " connections");
+              // console.log("This dot can connect!");
+              // console.log("the Dot you are connecting to has", dot.connections.length, " connections");
               
               if (this.currentLine) {
                 this.currentLine.setLine(dot);

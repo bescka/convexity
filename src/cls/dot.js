@@ -51,13 +51,13 @@ export class SingleDot {
       if (activeDot && this !== activeDot) {
         for (const wall of walls) {
           if (wall.intersectsLine(activeDot, this)) {
-            console.log('wall intersects line!')
+            // console.log('wall intersects line!')
             this.isHovered = false;
             return;
           }
         }
       }
-      console.log('no walls!')
+      // console.log('no walls!')
       this.isHovered = true;
     } else {
       this.isHovered = false;

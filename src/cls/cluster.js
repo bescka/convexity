@@ -136,7 +136,7 @@ export class Cluster {
   }
 
   isShapeConvex() {
-    console.log('this shape is:', this.shape)
+    // console.log('this shape is:', this.shape)
     return this.isConvex;
   }
 }

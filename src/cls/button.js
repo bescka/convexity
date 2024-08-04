@@ -45,12 +45,12 @@ export class BasicMenuButton {
         mouseY > this.y && mouseY < this.y + this.height) {
       this.cleanup();
       if (this.cleanupFunction) {
-        console.log('this button has cleanup function')
+        // console.log('this button has cleanup function')
         this.cleanupFunction();
       }
 
       try {
-        console.log("running sceneManager")
+        // console.log("running sceneManager")
         await this.sceneManager.switchTo(this.linksTo, this.action);
       } catch (error) {
         console.error('Error loading module:', error);

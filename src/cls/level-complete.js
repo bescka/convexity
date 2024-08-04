@@ -35,7 +35,7 @@ export class LevelComplete {
   }
 
   draw() {
-    console.log("calling level complete draw")
+    // console.log("calling level complete draw")
     this.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
     this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.buttons.forEach(button => button.draw(this.ctx));
